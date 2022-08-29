@@ -3,6 +3,7 @@
 #include "keys.hpp"
 #include "location_access.hpp"
 #include "debug.hpp"
+#include "spoiler_log.hpp"
 
 #include <string>
 #include <list>
@@ -65,14 +66,24 @@ public:
     }
 
     bool ConditionsMet(bool allDayTimes = false) const {
+
         Area* parent = AreaTable(parentRegion);
+        //PlacementLog_Msg("\nConditions Met parent = ");
+        //PlacementLog_Msg(parent->regionName+"\n"); 
         int conditionsMet = 0;
 
         if (allDayTimes && !parent->AllAccess()){
             return false;
         }
-        //conditionsMet = (parent->HasAccess());
-        return conditionsMet;
+
+        //check all possible day/night condition combonations
+        conditionsMet = (parent->day1Day && CheckConditionAtDayTime(Logic::IsDay1, Logic::AtDay)) + 
+                        (parent->day2Day && CheckConditionAtDayTime(Logic::IsDay2, Logic::AtDay)) + 
+                        (parent->day3Day && CheckConditionAtDayTime(Logic::IsDay3, Logic::AtDay)) + 
+                        (parent->day1Night && CheckConditionAtDayTime(Logic::IsDay1, Logic::AtNight)) + 
+                        (parent->day2Night && CheckConditionAtDayTime(Logic::IsDay2, Logic::AtNight)) + 
+                        (parent->day3Night && CheckConditionAtDayTime(Logic::IsDay3, Logic::AtNight));
+        return conditionsMet &&(!allDayTimes || conditionsMet == 6);
     }
 
     AreaKey GetAreaKey() const {
@@ -81,12 +92,11 @@ public:
 
     //set the logic to be a specific day and time to see if condition still holds
     bool CheckConditionAtDayTime(bool& day, bool& time) const {
-        Logic::IsDay1Day = false;
-        Logic::IsDay2Day = false;
-        Logic::IsDay3Day = false;
-        Logic::IsDay1Night = false;
-        Logic::IsDay2Night = false;
-        Logic::IsDay3Night = false;
+        Logic::IsDay1 = false;
+        Logic::IsDay2 = false;
+        Logic::IsDay3 = false;
+        Logic::AtDay = false;
+        Logic::AtNight = false;
 
         time = true;
         day = true;

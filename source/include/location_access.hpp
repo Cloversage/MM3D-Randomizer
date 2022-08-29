@@ -38,12 +38,9 @@ public:
 
     bool CheckConditionAtDay(bool& day, bool& time) {
         
-        Logic::IsDay1Day = false;
-        Logic::IsDay1Night = false;
-        Logic::IsDay2Day = false;
-        Logic::IsDay2Night = false;
-        Logic::IsDay3Day = false;
-        Logic::IsDay3Night = false;
+        Logic::IsDay1 = false;
+        Logic::IsDay2 = false;
+        Logic::IsDay3 = false;
         Logic::AtDay = false;
         Logic::AtNight = false;
 
@@ -169,16 +166,17 @@ public:
     }
 
     bool Day2() const {
-        return Day1() && (day2Day || day2Night);
+        return (day1Day && day1Night) && (day2Day || day2Night);
     }
 
     bool Day3() const {
-        return Day2() && (day3Day || day3Night);
+        return (day2Day && day2Night && day1Day && day1Night) && (day3Day || day3Night);
     }
 
-    bool AllDaysCheck() const {
+    //Probably dont need this one, should be the same as AllAccess
+    /*bool AllDaysCheck() const {
         return Day1() && Day2() && Day3();
-    }
+    }*/
 
     //Check to see if an exit can be access as both ages at both times of day
     bool CheckAllAccess(AreaKey exitKey);
@@ -190,32 +188,23 @@ public:
     bool HereCheck(ConditionFn condition) {
 
         //store past day variables
-        bool pastDay1Day = Logic::IsDay1Day;
-        bool pastDay2Day = Logic::IsDay2Day;
-        bool pastDay3Day = Logic::IsDay3Day;
-        bool pastDay1Night = Logic::IsDay1Night;
-        bool pastDay2Night = Logic::IsDay2Night;
-        bool pastDay3Night = Logic::IsDay3Night;
+        bool pastDay1 = Logic::IsDay1;
+        bool pastDay2 = Logic::IsDay2;
+        bool pastDay3 = Logic::IsDay3;
 
         //Set Day Access as this areas Days
-        Logic::IsDay1Day = Day1();
-        Logic::IsDay1Night = Day1();
-        Logic::IsDay2Day = Day2();
-        Logic::IsDay2Night = Day2();
-        Logic::IsDay3Day = Day3();
-        Logic::IsDay3Night = Day3();
+        Logic::IsDay1 = Day1();
+        Logic::IsDay2 = Day2();
+        Logic::IsDay3 = Day3();
         
         //update helpers and check condition
         Logic::UpdateHelpers();
         bool hereVal = condition();
 
         //set back age variables
-        Logic::IsDay1Day = pastDay1Day;
-        Logic::IsDay2Day = pastDay2Day;
-        Logic::IsDay3Day = pastDay3Day;
-        Logic::IsDay1Night = pastDay1Night;
-        Logic::IsDay2Night = pastDay2Night;
-        Logic::IsDay3Night = pastDay3Night;
+        Logic::IsDay1 = pastDay1;
+        Logic::IsDay2 = pastDay2;
+        Logic::IsDay3 = pastDay3;
         Logic::UpdateHelpers();
 
         return hereVal;

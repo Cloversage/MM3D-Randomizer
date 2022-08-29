@@ -299,12 +299,9 @@ namespace Logic {
 	extern bool AtDay;
 	extern bool AtNight;
 	extern u8 Day;
-	extern bool IsDay1Day;
-	extern bool IsDay2Day;
-	extern bool IsDay3Day;
-	extern bool IsDay1Night;
-	extern bool IsDay2Night;
-	extern bool IsDay3Night;
+	extern bool IsDay1;
+	extern bool IsDay2;
+	extern bool IsDay3;
 
 	void UpdateHelpers();
 	bool CanPlay(bool song);

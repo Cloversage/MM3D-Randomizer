@@ -264,6 +264,7 @@ void LocationTable_Init() {
 	//locationTable[WOODFALL_TEMPLE_COMPASS_CHEST]							   = ItemLocation::Chest	(0x1B, 0x1C, "Woodfall Temple Compass Chest",						WOODFALL_TEMPLE_COMPASS_CHEST,		WOODFALL_TEMPLE_COMPASS,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaCompass} );
 	locationTable[WOODFALL_TEMPLE_BOSS_KEY_CHEST]							   = ItemLocation::Chest	(0x1B, 0x1E, "Woodfall Temple Boss Key Chest",						WOODFALL_TEMPLE_BOSS_KEY_CHEST,		WOODFALL_TEMPLE_BOSS_KEY,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaBossKey} );
 	locationTable[WOODFALL_TEMPLE_SMALL_KEY_CHEST]							   = ItemLocation::Chest	(0x1B, 0x01, "Woodfall Temple Small Key Chest",						WOODFALL_TEMPLE_SMALL_KEY_CHEST,	WOODFALL_TEMPLE_SMALL_KEY,			{Category::cWoodfall, Category::cWoodfallTemple,Category::cVanillaSmallKey} );
+	locationTable[GIANTS_OATH_TO_ORDER]                                        = ItemLocation::Base     (0x00, 0x00, "Oath to Order",                                       GIANTS_OATH_TO_ORDER,               OATH_TO_ORDER,                      {Category::cWoodfall, Category::cWoodfallTemple, Category::cSong});
 
 	//Snowhead Temple
 	locationTable[SNOWHEAD_TEMPLE_FIRE_ARROW_CHEST]						   	   = ItemLocation::Chest	(0x21, 0x1B, "Snowhead Temple Fire Arrow Chest",						SNOWHEAD_TEMPLE_FIRE_ARROW_CHEST,		FIRE_ARROWS,			{Category::cSnowhead, Category::cSnowheadTemple,Category::cChest } );
@@ -851,48 +852,56 @@ std::vector<LocationKey> chestLocations = {
 	SECRET_SHRINE_FINAL_CHEST,
 };
 std::vector<LocationKey> logicalLocations ={
-	HMS_SONG_OF_HEALING, 
-	CLOCK_TOWER_OCARINA_OF_TIME,
-	HMS_DEKU_MASK, //DEKU MASK
-	HMS_STARTING_SWORD, //KOKIRI SWORD
-	DEKU_PALACE_IMPRISONED_MONKEY,//SONATA OF AWAKENING
-	GORON_VILLAGE_POWDER_KEG_CHALLENGE,//POWDER KEG
-	GORON_VILLAGE_GORON_LULLABY, //GORON LULLABY
-	GBC_MIKAU, //ZORA MASK
-	GBC_BABY_ZORAS, //NEW EWAVE BOSSA NOVA
-	IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET, //SONG OF STORMS
-	MILK_ROAD_GORMAN_RACE, //GARO MASK
-	MOUNTAIN_VILLAGE_DARMANI, //GORON MASK
-	N_CLOCK_TOWN_GREAT_FAIRY_DEKU, //MAGIC METER
-	N_CLOCK_TOWN_OLD_LADY, //BLAST MASK
-	ROMANI_RANCH_ROMANIS_GAME, //EPONAS SONG 
-	SOUTHERN_SWAMP_MUSIC_STATUE, //SONG OF SOARING
-	SOUTHERN_SWAMP_KOTAKE, //BOTTLE WITH RED POTION - BOTTLE
-	W_CLOCK_TOWN_BOMB_BAG_BUY, //BOMB BAG
-	IKANA_CASTLE_IKANA_KING, //ELEGY OF EMPTINESS
+	N_CLOCK_TOWN_OLD_LADY, //Blast Mask 
+	N_CLOCK_TOWN_GREAT_FAIRY_DEKU, //Magic Meter 
+	W_CLOCK_TOWN_BOMB_BAG_BUY, //Bomb Bag 
+	HMS_SONG_OF_HEALING, //Song of Healing 
+	HMS_DEKU_MASK, //Deku Mask 
+	HMS_STARTING_SWORD, //Kokiri Sword 
+	CLOCK_TOWER_OCARINA_OF_TIME, //Ocarina 
+	TERMINA_FIELD_MOONS_TEAR, //Moon Tear 
+	SOUTHERN_SWAMP_MUSIC_STATUE, //Song of Soaring 
+	SOUTHERN_SWAMP_KOUME, //PictoBox 
+	SOUTHERN_SWAMP_KOTAKE, //Bottle With Red Potion 
+	DEKU_PALACE_IMPRISONED_MONKEY, //Sonata of Awakening 
+	DEKU_PALACE_BEAN_DADDY, //Magic Beans 
+	MOUNTAIN_VILLAGE_DARMANI, //Goron Mask 
+	GORON_VILLAGE_POWDER_KEG_CHALLENGE, //Powder Keg 
+	GORON_VILLAGE_GORON_LULLABY, //Gorons Lullaby 
+	MILK_ROAD_GORMAN_RACE, //Garo Mask 
+	ROMANI_RANCH_ROMANIS_GAME, //Eponas Song 
+	GBC_MIKAU, //Zora Mask 
+	GBC_BABY_ZORAS, //New Wave Bosssa Nova 
+	GBC_FISHERMAN_PHOTO, //Seahorse 
+	IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST, //Captains Hat
+	IKANA_GRAVEYARD_DAY_ONE_GRAVE_TABLET, //Song of Storms 
+	IKANA_CANYON_PAMELAS_FATHER, //Gibdos Mask 
+	IKANA_CASTLE_IKANA_KING, //Elegy of Emptiness 
 	//WOODFALL TEMPLE
-	WOODFALL_TEMPLE_SMALL_KEY_CHEST,
-	WOODFALL_TEMPLE_BOSS_KEY_CHEST,
-	ODOLWA,
+	WOODFALL_TEMPLE_SMALL_KEY_CHEST, //SMALL KEY
+	WOODFALL_TEMPLE_BOSS_KEY_CHEST, //BOSS KEY
+	ODOLWA, //BOSS 
+	GIANTS_OATH_TO_ORDER,//Oath to Order
 	//SNOWHEAD TEMPLE
-	SNOWHEAD_TEMPLE_BOSS_KEY_CHEST,
+	SNOWHEAD_TEMPLE_BOSS_KEY_CHEST, //BOSS KEY
 	SNOWHEAD_TEMPLE_BLOCK_ROOM_CHEST, //SMALL KEY
 	SNOWHEAD_TEMPLE_ICICLE_ROOM_CHEST, //SMALL KEY
 	SNOWHEAD_TEMPLE_BRIDGE_ROOM_CHEST, //SMALL KEY
-	GOHT,
+	GOHT, //BOSS
 	//GREAT BAY TEMPLE
-	GBT_BOSS_KEY_CHEST,
-	GBT_SMALL_KEY_CHEST,
-	GYORG,
+	GBT_BOSS_KEY_CHEST, //BOSS KEY
+	GBT_SMALL_KEY_CHEST, //SMALL KEY
+	GYORG, //BOSS
 	//STONE TOWER TEMPLE
-	STONE_TOWER_TEMPLE_BOSS_KEY_CHEST,
+	STONE_TOWER_TEMPLE_BOSS_KEY_CHEST, //BOSS KEY
 	STONE_TOWER_TEMPLE_ARMOS_ROOM_CHEST, //SMALL KEY
 	STONE_TOWER_TEMPLE_BRIDGE_SWITCH_CHEST, //SMALL KEY
 	STONE_TOWER_TEMPLE_UPDRAFT_ROOM_CHEST, //SMALL KEY
 	STONE_TOWER_TEMPLE_DEATH_ARMOS_ROOM_CHEST, //SMALL KEY
 	STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST, //GIANTS MASK
-	TWINMOLD,
-	MAJORA,
+	TWINMOLD, //BOSS
+	//MOON
+	MAJORA, //END
 };
 std::vector<LocationKey> overworldLocations = {
 	//Deku Palace
@@ -1160,7 +1169,7 @@ void GenerateLocationPool() {
   //AddLocation(LINKS_POCKET);
   //AddLocations(overworldLocations);
   AddLocations(chestLocations);
-  //AddLocations(logicalLocations);
+  AddLocations(logicalLocations);
   /*
   for (auto dungeon : Dungeon::dungeonList) {
     AddLocations(dungeon->GetDungeonLocations());
@@ -1270,7 +1279,7 @@ void CreateItemOverrides() {
       .key = loc->Key(),
       .value = val,
     });
-	PlacementLog_Msg("\tLoc's Scene: ");
+	/*PlacementLog_Msg("\tLoc's Scene: ");
 	PlacementLog_Msg(std::to_string(loc->GetScene()));
     PlacementLog_Msg("\tScene: ");
     PlacementLog_Msg(std::to_string(loc->Key().scene));
@@ -1284,7 +1293,7 @@ void CreateItemOverrides() {
     PlacementLog_Msg(loc->GetName());
     PlacementLog_Msg(": ");
     PlacementLog_Msg(loc->GetPlacedItemName().GetEnglish());
-    PlacementLog_Msg("\n");
+    PlacementLog_Msg("\n");*/
   }
   PlacementLog_Msg("Overrides Created: ");
   PlacementLog_Msg(std::to_string(overrides.size()));
