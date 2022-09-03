@@ -294,8 +294,10 @@ namespace Logic {
 	bool IsDay1 = false;
 	bool IsDay2 = false;
 	bool IsDay3 = false;
+
+	bool CanGoToMoon = false;
 	
-	bool ZoraEgg = false;
+	u8 ZoraEgg = 0;
 
 	//placement tracking
 	u8 AddedProgressiveBombBags = 0;
@@ -406,6 +408,10 @@ namespace Logic {
 		return (dungeonKeyCount >= requiredAmount);
 	}
 
+	bool ZoraEggCount(u8 currentEggCount, u8 requiredAmount) {
+		return (currentEggCount >= requiredAmount);
+	}
+
 	void UpdateHelpers() {
 		//Drop Access
 		DekuStickDrop = StickPot || DekuBabaSticks;
@@ -474,7 +480,7 @@ namespace Logic {
 		//BigPoe = IkanaCanyonAccess && GibdosMask && AnyBottle && AnyBombBag;
 		//HotSpringWater = NorthAccess && AnyBottle && (SnowheadClear || UseFireArrow);
 		//SpringWater = AnyBottle;
-		ZoraEgg = PiratesFortressAccess && Hookshot && AnyBottle && PinnacleRockAccess && ((DekuMask && MagicMeter) || Arrows);
+		//ZoraEgg = PiratesFortressAccess && Hookshot && AnyBottle && PinnacleRockAccess && ((DekuMask && MagicMeter) || Arrows);
 		AllZoraEggs = CanUse(ZORA_MASK) && CanUse(HOOKSHOT) && AnyBottle && Seahorse && CanUse(DEKU_MASK) && MagicMeter;
 		Mushroom = MaskOfScents && AnyBottle;
 		AnyHealingPotion = AnyRedPotion || AnyBluePotion;
@@ -520,13 +526,13 @@ namespace Logic {
 		EponaAccess = GoronMask && PowderKeg;
 		MoonAccess = StoneTowerClear && GreatBayClear && SnowheadClear && WoodfallClear;
 		//Temple Keys
-		OneSnowheadKey = SnowheadTempleKeys == 1;
-		TwoSnowheadKeys = SnowheadTempleKeys == 2;
-		OneStoneTowerKey = StoneTowerTempleKeys == 1;
-		TwoStoneTowerKeys = StoneTowerTempleKeys == 2;
-		ThreeStoneTowerKeys = StoneTowerTempleKeys == 3;
-		OneWoodfallKey = WoodfallTempleKeys == 1;
-		OneGreatBayKey = GreatBayTempleKeys == 1;
+		//OneSnowheadKey = SnowheadTempleKeys == 1;
+		//TwoSnowheadKeys = SnowheadTempleKeys == 2;
+		//OneStoneTowerKey = StoneTowerTempleKeys == 1;
+		//TwoStoneTowerKeys = StoneTowerTempleKeys == 2;
+		//ThreeStoneTowerKeys = StoneTowerTempleKeys == 3;
+		//OneWoodfallKey = WoodfallTempleKeys == 1;
+		//OneGreatBayKey = GreatBayTempleKeys == 1;
 		//Stray Fairy Rewards
 		AllWoodfallStrays = WoodfallClear;
 		AllSnowheadStrays = SnowheadClear;
@@ -573,7 +579,6 @@ namespace Logic {
 	  Seahorse = false;
 	  DekuPrincess = false;
 	  BigPoe = false;
-	  ZoraEgg = false;
 	  Mushroom = false;
 	  SpringWater = false;
 	  HotSpringWater = false;
@@ -670,16 +675,17 @@ namespace Logic {
 	  GohtRemains = false;
 	  GyorgRemains = false;
 	  TwinmoldRemains = false;
+	  
 	//Progressive Items
 	//u8 ProgressiveBow = 0;
 	//u8 ProgressiveMagic = 0;
 	//u8 ProgressiveWallet = 0;
 	//u8 ProgressiveBombBag = 0;
 	//Keys
-	//u8 WoodfallTempleKeys = 0;
-	//u8 SnowheadTempleKeys = 0;
-	//u8 GreatBayTempleKeys = 0;
-	//u8 StoneTowerTempleKeys = 0;
+	 WoodfallTempleKeys = 0;
+	 SnowheadTempleKeys = 0;
+	 GreatBayTempleKeys = 0;
+	 StoneTowerTempleKeys = 0;
 	//Boss Keys
 	  BossKeyWoodfallTemple = false;
 	  BossKeySnowheadTemple = false;
@@ -835,6 +841,8 @@ namespace Logic {
 	IsDay2 = false;
 	IsDay3 = false;
 	
+	  ZoraEgg = 0;
+	CanGoToMoon = false;
 	//placement tracking
 	//u8 AddedProgressiveBombBags = 0;
 	//u8 AddedProgressiveMagics = 0;

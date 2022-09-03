@@ -132,7 +132,10 @@ void LocationTable_Init() {
 	//locationTable[PINNACLE_ROCK_SEAHORSES]									   = ItemLocation::Base		   (0x25, 0x00, "Pinnacle Rock Seahorses",							PINNACLE_ROCK_SEAHORSES,			PIECE_OF_HEART,					{Category::cPinnacleRock} );
 	locationTable[PINNACLE_ROCK_UPPER_CHEST]								   = ItemLocation::Chest	   (0x25, 0x02, "Pinnacle Rock Upper Chest",						PINNACLE_ROCK_UPPER_CHEST,			RED_RUPEE,						{Category::cPinnacleRock,Category::cChest } );
 	locationTable[PINNACLE_ROCK_LOWER_CHEST]								   = ItemLocation::Chest	   (0x25, 0x01, "Pinnacle Rock Lower Chest",						PINNACLE_ROCK_LOWER_CHEST,			RED_RUPEE,						{Category::cPinnacleRock,Category::cChest } );
-	
+	locationTable[PINNACLE_ROCK_ZORA_EGG1] 									   = ItemLocation::Collectable (0x00, 0x00, "Pinnacle Rock Zora Egg 1",                         PINNACLE_ROCK_ZORA_EGG1,            ZORA_EGG,                       {Category::cPinnacleRock, Category::cBottleCatch});
+	locationTable[PINNACLE_ROCK_ZORA_EGG2] 								       = ItemLocation::Collectable (0x00, 0x00, "Pinnacle Rock Zora Egg 2",                         PINNACLE_ROCK_ZORA_EGG2,            ZORA_EGG,                       {Category::cPinnacleRock, Category::cBottleCatch});
+	locationTable[PINNACLE_ROCK_ZORA_EGG3]									   = ItemLocation::Collectable (0x00, 0x00, "Pinnacle Rock Zora Egg 3",                         PINNACLE_ROCK_ZORA_EGG3,            ZORA_EGG,                       {Category::cPinnacleRock, Category::cBottleCatch});
+
 	//Road to Ikana
 	locationTable[ROAD_TO_IKANA_PILLAR_CHEST]								   = ItemLocation::Chest   (0x53, 0x00, "Road to Ikana Pillar Chest",							ROAD_TO_IKANA_PILLAR_CHEST,				RED_RUPEE,				{Category::cRoadToIkana,Category::cChest } );
 	locationTable[ROAD_TO_IKANA_GROTTO_CHEST]										   = ItemLocation::Chest	   (0x07, 0x16, "Road to Ikana Grotto",									ROAD_TO_IKANA_GROTTO,					BOMBCHU_5,				{Category::cRoadToIkana,Category::cGrotto} );
@@ -307,7 +310,12 @@ void LocationTable_Init() {
 	locationTable[PF_EXTERIOR_SAND_CHEST]						              = ItemLocation::Chest	   (0x3B, 0x01, "Pirate's Fortress Exterior Sand Chest",			PF_EXTERIOR_SAND_CHEST,		RED_RUPEE,				{Category::cPiratesFortressExterior,Category::cChest } );
 	locationTable[PF_EXTERIOR_CORNER_CHEST]					                  = ItemLocation::Chest	   (0x3B, 0x02, "Pirate's Fortress Exterior Corner Chest",			PF_EXTERIOR_CORNER_CHEST,		RED_RUPEE,				{Category::cPiratesFortressExterior,Category::cChest } );
 	//locationTable[PF_INT_INVISIBLE_SOLDIER]							      = ItemLocation::Base	   (0x53, 0x00, "Pirate's Fortress Interior Invisible Soldier",		PF_INT_INVISIBLE_SOLDIER,		STONE_MASK,				{Category::cPiratesFortressInterior, Category::cMask} );
-	
+	locationTable[PF_INT_HOOKSHOT_ROOM_ZORA_EGG]                              = ItemLocation::Collectable (0x00, 0x00, "Pirates Fortress Interior Hookshot Room Zora Egg", PF_INT_HOOKSHOT_ROOM_ZORA_EGG, ZORA_EGG,         {Category::cPiratesFortressInterior, Category::cBottleCatch});
+	locationTable[PF_INT_GUARD_ROOM_ZORA_EGG]                                 = ItemLocation::Collectable (0x00, 0x00, "Pirates Fortress Interior Guard Room Zora Egg",    PF_INT_GUARD_ROOM_ZORA_EGG,    ZORA_EGG,         {Category::cPiratesFortressInterior, Category::cBottleCatch});
+	locationTable[PF_INT_BARREL_MAZE_ZORA_EGG]                                = ItemLocation::Collectable (0x00, 0x00, "Pirates Fortress Interior Barrel Maze Zora Egg",   PF_INT_BARREL_MAZE_ZORA_EGG,   ZORA_EGG,         {Category::cPiratesFortressInterior, Category::cBottleCatch});
+	locationTable[PF_INT_LAVA_ROOM_ZORA_EGG]                                  = ItemLocation::Collectable (0x00, 0x00, "Pirates Fortress Interior Lava Room Zora Egg",     PF_INT_LAVA_ROOM_ZORA_EGG,     ZORA_EGG,         {Category::cPiratesFortressInterior, Category::cBottleCatch});
+
+
 	//Beneath The Well
 	locationTable[BENEATH_THE_WELL_MIRROR_SHIELD_CHEST]						   = ItemLocation::Chest	(0x4B, 0x1B, "Beneath the Well Mirror Shield Chest"	,				BENEATH_THE_WELL_MIRROR_SHIELD_CHEST,	MIRROR_SHIELD,			{Category::cBeneathTheWell,Category::cChest } );
 	locationTable[WELL_LEFT_PATH_CHEST]						  	   = ItemLocation::Chest	(0x4B, 0x02, "Beneath the Well Left Path Chest"	,				   WELL_LEFT_PATH_CHEST,	    PURPLE_RUPEE,			{Category::cBeneathTheWell,Category::cChest } );

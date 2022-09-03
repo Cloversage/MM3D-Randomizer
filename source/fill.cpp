@@ -119,26 +119,6 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     bool ageTimePropigated = false;
     bool firstIteration = true;
 
-    //for each area in the areaPool
-    /*
-        for (size_t z=0;z<areaPool.size(); z++) {
-            Area* area2 = AreaTable(areaPool[z]);
-            PlacementLog_Msg("\nAreas found from area array:\n");
-            PlacementLog_Msg(area2->regionName);
-            CitraPrint(area2->regionName);
-            PlacementLog_Msg("\n");
-            //for each ItemLocation in this area
-            PlacementLog_Msg("\nLocations found from area array:\n");
-            for (size_t y=0;y< area2->locations.size(); y++) {
-                LocationAccess& locPair2 = area2->locations[y];
-                LocationKey loc2 = locPair2.GetLocation();
-                ItemLocation* location2 = Location(loc2);
-                PlacementLog_Msg(location2->GetName());
-                PlacementLog_Msg("\n");
-                CitraPrint(location2->GetName());
-            } 
-        }*/
-
     //If no new items are found and no events are updated, then the next iteration won't provide any new location
     while (newItemLocations.size() > 0  || ageTimePropigated || firstIteration || updatedEvents) { // - events not included in mm3dr yet
         firstIteration = false;
@@ -177,7 +157,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                     exitArea->addedToPool = true;
                     areaPool.push_back(exit.GetAreaKey());
                     //PlacementLog_Msg("Added :" + exitArea->regionName + " to the pool \n");
-                    CitraPrint("Added " + exitArea->regionName + " to the pool");
+                    //CitraPrint("Added " + exitArea->regionName + " to the pool");
                 }
                 //add shuffled entrances to the entrance playthrough
                 /*
@@ -196,6 +176,8 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                 LocationAccess& locPair = area->locations[k];
                 LocationKey loc = locPair.GetLocation();
                 ItemLocation* location = Location(loc);
+
+                //CitraPrint(location->GetName() + " Has Item Placed at it: " + location->GetPlacedItemName().GetEnglish());
             
                 if ((!location->IsAddedToPool())  && (locPair.ConditionsMet())) {   
 
@@ -220,7 +202,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                             //This preprocessing is done to reduce the amount of searches performed in PareDownPlaythrough
                             //Want to exclude:
                             //2) Bombchus after the first (including buy bombchus)
-                            bool exclude = true;
+                            bool exclude = false;
                             //Only print first bombchu location found
                             /*if (bombchus && !bombchusFound) {
                                 bombchusFound = true;
@@ -237,6 +219,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                         }
                         //MAJORA'S_MASK has been found, seed is beatable, nothing else in this or future spheres matters
                         else if (location->GetPlacedItemKey() == MAJORAS_MASK) {
+                            CitraPrint("Majoras Mask has been found!");
                             itemSphere.clear();
                             itemSphere.push_back(loc);
                             playthroughBeatable = true;
@@ -290,7 +273,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     return accessibleLocations;
     
 }
-
+/*
 static void GeneratePlaythrough() {
     playthroughBeatable = false;
     Logic::LogicReset();
@@ -377,7 +360,7 @@ static void CalculateWotH() {
     playthroughBeatable = true;
     Logic::LogicReset();
     GetAccessibleLocations(allLocations);
-}
+}*/
 
 //Will place things completely randomly, no logic checks are performed
 static void FastFill(std::vector<ItemKey> items, std::vector<LocationKey> locations, bool endOnItemsEmpty = false) {
@@ -439,6 +422,7 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
         //copy all not yet placed advancement items so that we can apply their effects for the fill algorithm
         std::vector<ItemKey> itemsToNotPlace = FilterFromPool(ItemPool, [](const ItemKey i) { return ItemTable(i).IsAdvancement();});
 
+
         //shuffle the order of items to place
         Shuffle(itemsToPlace);
         while (!itemsToPlace.empty()) {
@@ -467,14 +451,14 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
             //CitraPrint("Accessible Locations: ");
             const std::vector<LocationKey> accessibleLocations = GetAccessibleLocations(allowedLocations);
             //print accessable locations to see what's accessable 
-            CitraPrint("Accessable Locations are:");
+            /*CitraPrint("Accessable Locations are:");
             PlacementLog_Msg("\nAccessable Locations are: \n");
             for (LocationKey loc : accessibleLocations)
                 {                
                 PlacementLog_Msg(Location(loc)->GetName());
                 PlacementLog_Msg("\n");
                 CitraPrint(Location(loc)->GetName());
-                }
+                }*/
             //retry if there are no more locations to place items
             if (accessibleLocations.empty()) {
 
@@ -501,7 +485,7 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
             //place the item within one of the allowed locations
             LocationKey selectedLocation = RandomElement(accessibleLocations);
             PlaceItemInLocation(selectedLocation, item);
-            CitraPrint("Placed " + ItemTable(item).GetName().GetEnglish() + " at " + Location(selectedLocation)->GetName());
+            //CitraPrint("Placed " + ItemTable(item).GetName().GetEnglish() + " at " + Location(selectedLocation)->GetName());
             attemptedLocations.push_back(selectedLocation);
 
             //This tells us the location went through the randomization algorithm
@@ -802,21 +786,25 @@ int Fill() {
         RandomizeDungeonRewards();
         
         showItemProgress = true;
+        CitraPrint("Starting AssumedFill...");
          //Then place the rest of the advancement items
         std::vector<ItemKey> remainingAdvancementItems = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) { return ItemTable(i).IsAdvancement();});
         AssumedFill(remainingAdvancementItems, allLocations, true);
-
+        CitraPrint("AssumedFill was sucessful");
+        CitraPrint("Starting Fast Fill...");
         //Fast fill for the rest of the pool
         std::vector<ItemKey> remainingPool = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) {return true;});
         FastFill(remainingPool, GetAllEmptyLocations(), false);
-        GeneratePlaythrough();
+        CitraPrint("Fast Fill of Remaining locations was sucessful");
+        //CitraPrint("Generating Playthrough...");
+        //GeneratePlaythrough();
         //Successful placement, produced beatable result
-        if (playthroughBeatable && !placementFailure) {
+        if (!placementFailure) { //&& playthroughBeatable 
             printf("Done");
-            printf("\x1b[9;10HCalculating Playthrough...");
-            PareDownPlaythrough();
-            CalculateWotH();
-            printf("Done");
+            //printf("\x1b[9;10HCalculating Playthrough...");
+            //printf("\x1b[9;10HCalculating Way of the Hero...");
+            //PareDownPlaythrough();
+            //CalculateWotH();
             CreateItemOverrides();
            // CreateEntranceOverrides();
            // CreateAlwaysIncludedMessages();
@@ -834,11 +822,11 @@ int Fill() {
         if (retries < 4) {
             GetAccessibleLocations(allLocations, SearchMode::AllLocationsReachable);
             printf("\x1b[9;10HFailed. Retrying... %d", retries + 2);
+            CitraPrint("Failed. Retrying...");
             Areas::ResetAllLocations();
             LogicReset();
         }
         retries++;
-        CitraPrint("Fill Failed: Retrying");
     }
     //All retries failed
     return -1;

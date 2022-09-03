@@ -303,77 +303,77 @@ const std::array<ItemKey, 12> songList = {
 	OATH_TO_ORDER
 };
 
-const std::array<ItemKey, 71> chestItems = {
-	RED_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
+const std::array<ItemKey, 15> chestItems = {
+	//RED_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
 	LENS_OF_TRUTH,
-	RED_RUPEE,
-	PURPLE_RUPEE,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
 	PIECE_OF_HEART,
-	RED_RUPEE,
-	BOMBCHU_5,
+	//RED_RUPEE,
+	//BOMBCHU_5,
 	PIECE_OF_HEART,
-	PURPLE_RUPEE,
-	BOMBCHU_5,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	BOMBCHU_5,
-	RED_RUPEE,
-	PURPLE_RUPEE,
-	RED_RUPEE,
-	PURPLE_RUPEE,
-	RED_RUPEE,
-	PURPLE_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
-	BOMBCHU_10,
+	//PURPLE_RUPEE,
+	//BOMBCHU_5,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//BOMBCHU_5,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	//RED_RUPEE,
+	//PURPLE_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//BOMBCHU_10,
 	MAGIC_BEAN,
 	PIECE_OF_HEART,
 	PIECE_OF_HEART,
-	BOMBCHU_5,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	BOMBCHU_5,
+	//BOMBCHU_5,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//BOMBCHU_5,
 	PIECE_OF_HEART,
-	RED_RUPEE,
+	//RED_RUPEE,
 	PIECE_OF_HEART,
-	BLUE_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	BOMBCHU_5,
-	PURPLE_RUPEE,
+	//BLUE_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//BOMBCHU_5,
+	//PURPLE_RUPEE,
 	HEROS_BOW,
 	FIRE_ARROWS,
 	ICE_ARROWS,
 	LIGHT_ARROWS,
 	HOOKSHOT,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	SILVER_RUPEE,
-	RED_RUPEE,
-	BLUE_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
-	RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//SILVER_RUPEE,
+	//RED_RUPEE,
+	//BLUE_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
+	//RED_RUPEE,
 	MIRROR_SHIELD,
-	PURPLE_RUPEE,
-	PURPLE_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
-	SILVER_RUPEE,
+	//PURPLE_RUPEE,
+	//PURPLE_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
+	//SILVER_RUPEE,
 	PIECE_OF_HEART
 };
 //additional chest items
@@ -467,6 +467,16 @@ void PlaceJunkInExcludedLocation(const LocationKey il) {
 	PlaceItemInLocation(STONE_TOWER_TEMPLE_COMPASS_CHEST, STONE_TOWER_TEMPLE_COMPASS);
 
 };*/
+
+static void PlaceVanillaZoraEggs() {
+	PlaceItemInLocation(PINNACLE_ROCK_ZORA_EGG1, ZORA_EGG);
+	PlaceItemInLocation(PINNACLE_ROCK_ZORA_EGG2, ZORA_EGG);
+	PlaceItemInLocation(PINNACLE_ROCK_ZORA_EGG3, ZORA_EGG);
+	PlaceItemInLocation(PF_INT_HOOKSHOT_ROOM_ZORA_EGG, ZORA_EGG);
+	PlaceItemInLocation(PF_INT_GUARD_ROOM_ZORA_EGG, ZORA_EGG);
+	PlaceItemInLocation(PF_INT_LAVA_ROOM_ZORA_EGG, ZORA_EGG);
+	PlaceItemInLocation(PF_INT_BARREL_MAZE_ZORA_EGG, ZORA_EGG);
+};
 
 static void PlaceVanillaSmallKeys() {
 	//for (auto dungeon : dungeonList) {
@@ -609,7 +619,8 @@ static void PlaceVanillaLogicHelpers() {
 	PlaceItemInLocation(IKANA_CANYON_PAMELAS_FATHER, GIBDOS_MASK);
 	PlaceItemInLocation(DEKU_PALACE_BEAN_DADDY, MAGIC_BEAN); //Magic Beans
 	PlaceItemInLocation(IKANA_GRAVEYARD_CAPTAIN_KEETA_CHEST, CAPTAINS_HAT); //Captains Hat
-	PlaceItemInLocation(GIANTS_OATH_TO_ORDER, OATH_TO_ORDER); //Oath to Order
+	PlaceItemInLocation(GIANTS_OATH_TO_ORDER, OATH_TO_ORDER, true); //Oath to Order
+	PlaceItemInLocation(STONE_TOWER_TEMPLE_GIANTS_MASK_CHEST, GIANTS_MASK); //Giant's Mask
 };
 /*static void PlaceVanillaBossRemains() {
 	PlaceItemInLocation(ODOLWA, ODOLWAS_REMAINS);
@@ -629,7 +640,7 @@ void GenerateItemPool() {
 
 	ItemPool.clear();
 	//Fixed Item Locations
-	PlaceItemInLocation(MAJORA, MAJORAS_MASK);
+	PlaceItemInLocation(MAJORA, MAJORAS_MASK, true);
 	if (!ShuffleChests) {
 		PlaceVanillaChestItems();
 	}
@@ -641,7 +652,7 @@ void GenerateItemPool() {
 	//PlaceVanillaBossRemains(); //done in fill.cpp - RandomizeDungeonRewards()
 	PlaceVanillaBossKeys(); //todo Keysanity settings
 	PlaceVanillaSmallKeys(); // for now all vanilla
-	
+	PlaceVanillaZoraEggs(); //for now all vanilla
 	/*
 	//Initialize ice trap models to always major items
 	IceTrapModels = {
