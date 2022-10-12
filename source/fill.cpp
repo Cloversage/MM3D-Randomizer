@@ -14,6 +14,7 @@
 #include "entrance.hpp"
 //#include "shops.hpp"
 #include "debug.hpp"
+
 #include <vector>
 #include <unistd.h>
 #include <list>
@@ -55,29 +56,33 @@ static bool UpdateToDAccess(Entrance* entrance) {
 
     //propogate day1day, day1night, day2day, day2night, day3day, day3night separate
     Area* parent = entrance->GetParentRegion();
+    //PlacementLog_Msg("\nparent = ");
+    //PlacementLog_Msg(parent->regionName+"\n");
     Area* connection = entrance->GetConnectedRegion();
+    //PlacementLog_Msg("\nconnection = ");
+    //PlacementLog_Msg(connection->regionName+"\n");
 
-    if(!connection->day1Day && parent->day1Day && entrance->CheckConditionAtDayTime(IsDay1Day, AtDay)){
+    if(!connection->day1Day && parent->day1Day && entrance->CheckConditionAtDayTime(IsDay1, AtDay)){
         connection->day1Day = true;
         ageTimePropigated = true;
     }
-    if(!connection->day2Day && parent->day2Day && entrance->CheckConditionAtDayTime(IsDay2Day, AtDay)){
+    if(!connection->day2Day && parent->day2Day && entrance->CheckConditionAtDayTime(IsDay2, AtDay)){
         connection->day2Day = true;
         ageTimePropigated = true;
     }
-    if(!connection->day3Day && parent->day3Day && entrance->CheckConditionAtDayTime(IsDay3Day, AtDay)){
+    if(!connection->day3Day && parent->day3Day && entrance->CheckConditionAtDayTime(IsDay3, AtDay)){
         connection->day3Day = true;
         ageTimePropigated = true;
     }
-    if(!connection->day1Night && parent->day1Night && entrance->CheckConditionAtDayTime(IsDay1Night, AtNight)){
+    if(!connection->day1Night && parent->day1Night && entrance->CheckConditionAtDayTime(IsDay1, AtNight)){
         connection->day1Night = true;
         ageTimePropigated = true;
     }
-    if(!connection->day2Night && parent->day2Night && entrance->CheckConditionAtDayTime(IsDay2Night, AtNight)){
+    if(!connection->day2Night && parent->day2Night && entrance->CheckConditionAtDayTime(IsDay2, AtNight)){
         connection->day2Night = true;
         ageTimePropigated = true;
     }
-    if(!connection->day3Night && parent->day3Night && entrance->CheckConditionAtDayTime(IsDay3Night, AtNight)){
+    if(!connection->day3Night && parent->day3Night && entrance->CheckConditionAtDayTime(IsDay3, AtNight)){
         connection->day3Night = true;
         ageTimePropigated = true;
     }
@@ -101,7 +106,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     Areas::AccessReset();
     LocationReset();
 
-    AreaTable(ROOT)->day1Day = true;
+    //AreaTable(ROOT)->day1Day = true;
     
     std::vector<AreaKey> areaPool = { ROOT };
     
@@ -113,25 +118,6 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     bool updatedEvents = false;
     bool ageTimePropigated = false;
     bool firstIteration = true;
-
-    //for each area in the areaPool
-    /*
-        for (size_t z=0;z<areaPool.size(); z++) {
-            Area* area2 = AreaTable(areaPool[z]);
-            PlacementLog_Msg("\nAreas found from area array:\n");
-            PlacementLog_Msg(area2->regionName);
-            PlacementLog_Msg("\n");
-            //for each ItemLocation in this area
-            PlacementLog_Msg("\nLocations found from area array:\n");
-            for (size_t y=0;y< area2->locations.size(); y++) {
-                LocationAccess& locPair2 = area2->locations[y];
-                LocationKey loc2 = locPair2.GetLocation();
-                ItemLocation* location2 = Location(loc2);
-                PlacementLog_Msg(location2->GetName());
-                PlacementLog_Msg("\n");
-            
-            } 
-        }*/
 
     //If no new items are found and no events are updated, then the next iteration won't provide any new location
     while (newItemLocations.size() > 0  || ageTimePropigated || firstIteration || updatedEvents) { // - events not included in mm3dr yet
@@ -152,7 +138,8 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
 
             if (area->UpdateEvents()) {
                 updatedEvents = true;
-                 PlacementLog_Msg("Updated Events for :" + area->regionName + "\n");
+                // PlacementLog_Msg("Updated Events for :" + area->regionName + "\n");
+                //CitraPrint("Updated Events for: " + area->regionName);
             }
             
             //for each exit in this area
@@ -169,7 +156,8 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                 if (!exitArea->addedToPool && exit.ConditionsMet()) {
                     exitArea->addedToPool = true;
                     areaPool.push_back(exit.GetAreaKey());
-                     PlacementLog_Msg("Added :" + exitArea->regionName + " to the pool \n");
+                    //PlacementLog_Msg("Added :" + exitArea->regionName + " to the pool \n");
+                    //CitraPrint("Added " + exitArea->regionName + " to the pool");
                 }
                 //add shuffled entrances to the entrance playthrough
                 /*
@@ -177,7 +165,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                     entranceSphere.push_back(&exit);
                     exit.AddToPool();
                     //don't list a coupled entrance from both directions 
-                    if (exit.GetReplacement()->GetReverse() != nullptr /*&& not decoupled_entrances*/ /*) { 
+                    if (exit.GetReplacement()->GetReverse() != nullptr */ /*&& not decoupled_entrances*/ /*) { 
                         exit.GetReplacement()->GetReverse()->AddToPool();
                     }
                 }*/
@@ -188,6 +176,8 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                 LocationAccess& locPair = area->locations[k];
                 LocationKey loc = locPair.GetLocation();
                 ItemLocation* location = Location(loc);
+
+                //CitraPrint(location->GetName() + " Has Item Placed at it: " + location->GetPlacedItemName().GetEnglish());
             
                 if ((!location->IsAddedToPool())  && (locPair.ConditionsMet())) {   
 
@@ -220,7 +210,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                             }*/
 
                             //Add all other advancement items
-                            //to-do, for now excldue is always false as we dont need to exclude shops/tokens/bombchus/ammodrops 
+                            //to-do, for now excldue is always true as we dont need to exclude shops/tokens/bombchus/ammodrops 
                             
                             //Has not been excluded, add to playthrough
                             if (!exclude) {
@@ -229,6 +219,7 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                         }
                         //MAJORA'S_MASK has been found, seed is beatable, nothing else in this or future spheres matters
                         else if (location->GetPlacedItemKey() == MAJORAS_MASK) {
+                            CitraPrint("Majoras Mask has been found!");
                             itemSphere.clear();
                             itemSphere.push_back(loc);
                             playthroughBeatable = true;
@@ -262,8 +253,9 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
                 allLocationsReachable = false;
                 auto message = "Location " + Location(loc)->GetName() + " not reachable\n";
                 PlacementLog_Msg(message);
+                CitraPrint(message);
                 #ifndef ENABLE_DEBUG
-                break;
+                    break;
                 #endif
             }
         }
@@ -281,10 +273,10 @@ std::vector<LocationKey> GetAccessibleLocations(const std::vector<LocationKey>& 
     return accessibleLocations;
     
 }
-
+/*
 static void GeneratePlaythrough() {
     playthroughBeatable = false;
-    LogicReset();
+    Logic::LogicReset();
     GetAccessibleLocations(allLocations, SearchMode::GeneratePlaythrough);
 }
 
@@ -302,7 +294,7 @@ static void PareDownPlaythrough() {
             ItemKey copy = Location(loc)->GetPlacedItemKey(); //Copy out item
             Location(loc)->SetPlacedItem(NONE); //Write in empty item
             playthroughBeatable = false;
-            LogicReset();
+            Logic::LogicReset();
             GetAccessibleLocations(allLocations, SearchMode::CheckBeatable); //Check if game is still beatable
             //Playthrough is still beatable without this item, therefore it can be removed from playthrough section.
             if (playthroughBeatable) {
@@ -355,7 +347,7 @@ static void CalculateWotH() {
         ItemKey copy = Location(loc)->GetPlacedItemKey(); //Copy out item
         Location(loc)->SetPlacedItem(NONE); //Write in empty item
         playthroughBeatable = false;
-        LogicReset();
+        Logic::LogicReset();
         GetAccessibleLocations(allLocations, SearchMode::CheckBeatable); //Check if game is still beatable
         Location(loc)->SetPlacedItem(copy); //Immediately put item back
         //If removing this item and no other item caused the game to become unbeatable, then it is strictly necessary, so keep it
@@ -366,9 +358,9 @@ static void CalculateWotH() {
     }
 
     playthroughBeatable = true;
-    LogicReset();
+    Logic::LogicReset();
     GetAccessibleLocations(allLocations);
-}
+}*/
 
 //Will place things completely randomly, no logic checks are performed
 static void FastFill(std::vector<ItemKey> items, std::vector<LocationKey> locations, bool endOnItemsEmpty = false) {
@@ -420,13 +412,16 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
         retries--;
         if (retries <= 0) {
             placementFailure = true;
+            CitraPrint("Placement Failed");
             return;
         }
+
         unsuccessfulPlacement = false;
         std::vector<ItemKey> itemsToPlace = items;
 
         //copy all not yet placed advancement items so that we can apply their effects for the fill algorithm
         std::vector<ItemKey> itemsToNotPlace = FilterFromPool(ItemPool, [](const ItemKey i) { return ItemTable(i).IsAdvancement();});
+
 
         //shuffle the order of items to place
         Shuffle(itemsToPlace);
@@ -436,7 +431,7 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
             itemsToPlace.pop_back();
 
             //assume we have all unplaced items
-            Logic::LogicReset();
+            LogicReset();
             for (ItemKey unplacedItem : itemsToPlace) {
                 ItemTable(unplacedItem).ApplyEffect();
             }
@@ -444,21 +439,26 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
                 ItemTable(unplacedItem).ApplyEffect();
             }
             //Print allowed locations to view active list at this point
-            PlacementLog_Msg("\nAllowed Locations are: \n"); 
+            /*PlacementLog_Msg("\nAllowed Locations are: \n"); 
+            CitraPrint("Allowed Locations are:");
             for (LocationKey loc : allowedLocations)
                 {                PlacementLog_Msg(Location(loc)->GetName());
                 PlacementLog_Msg("\n");
-                }
+                CitraPrint(Location(loc)->GetName());
+                }*/
 
             //get all accessible locations that are allowed
+            //CitraPrint("Accessible Locations: ");
             const std::vector<LocationKey> accessibleLocations = GetAccessibleLocations(allowedLocations);
             //print accessable locations to see what's accessable 
+            /*CitraPrint("Accessable Locations are:");
             PlacementLog_Msg("\nAccessable Locations are: \n");
             for (LocationKey loc : accessibleLocations)
                 {                
                 PlacementLog_Msg(Location(loc)->GetName());
                 PlacementLog_Msg("\n");
-                }
+                CitraPrint(Location(loc)->GetName());
+                }*/
             //retry if there are no more locations to place items
             if (accessibleLocations.empty()) {
 
@@ -485,6 +485,7 @@ static void AssumedFill(const std::vector<ItemKey>& items, const std::vector<Loc
             //place the item within one of the allowed locations
             LocationKey selectedLocation = RandomElement(accessibleLocations);
             PlaceItemInLocation(selectedLocation, item);
+            //CitraPrint("Placed " + ItemTable(item).GetName().GetEnglish() + " at " + Location(selectedLocation)->GetName());
             attemptedLocations.push_back(selectedLocation);
 
             //This tells us the location went through the randomization algorithm
@@ -781,6 +782,55 @@ int Fill() {
         //RemoveStartingItemsFromPool();
         //FillExcludedLocations();
         
+        //Place dungeon rewards
+        RandomizeDungeonRewards();
+        
+        showItemProgress = true;
+        CitraPrint("Starting AssumedFill...");
+         //Then place the rest of the advancement items
+        std::vector<ItemKey> remainingAdvancementItems = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) { return ItemTable(i).IsAdvancement();});
+        AssumedFill(remainingAdvancementItems, allLocations, true);
+        CitraPrint("AssumedFill was sucessful");
+        CitraPrint("Starting Fast Fill...");
+        //Fast fill for the rest of the pool
+        std::vector<ItemKey> remainingPool = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) {return true;});
+        FastFill(remainingPool, GetAllEmptyLocations(), false);
+        CitraPrint("Fast Fill of Remaining locations was sucessful");
+        //CitraPrint("Generating Playthrough...");
+        //GeneratePlaythrough();
+        //Successful placement, produced beatable result
+        if (!placementFailure) { //&& playthroughBeatable 
+            printf("Done");
+            //printf("\x1b[9;10HCalculating Playthrough...");
+            //printf("\x1b[9;10HCalculating Way of the Hero...");
+            //PareDownPlaythrough();
+            //CalculateWotH();
+            CreateItemOverrides();
+           // CreateEntranceOverrides();
+           // CreateAlwaysIncludedMessages();
+            /*if (GossipStoneHints.IsNot(HINTS_NO_HINTS)) {
+                printf("\x1b[10;10HCreating Hints...");
+                CreateAllHints();
+                printf("Done");
+            }
+            if (ShuffleMerchants.Is(SHUFFLEMERCHANTS_HINTS)) {
+                CreateMerchantsHints();
+            }*/
+            return 1;
+        }
+        //Unsuccessful placement
+        if (retries < 4) {
+            GetAccessibleLocations(allLocations, SearchMode::AllLocationsReachable);
+            printf("\x1b[9;10HFailed. Retrying... %d", retries + 2);
+            CitraPrint("Failed. Retrying...");
+            Areas::ResetAllLocations();
+            LogicReset();
+        }
+        retries++;
+    }
+    //All retries failed
+    return -1;
+}
         //Temporarily add shop items to the ItemPool so that entrance randomization
         //can validate the world using deku/hylian shields
         /*AddElementsToPool(ItemPool, GetMinVanillaShopItems(32)); //assume worst case shopsanity 4
@@ -792,7 +842,6 @@ int Fill() {
         //erase temporary shop items
         FilterAndEraseFromPool(ItemPool, [](const ItemKey item) {return ItemTable(item).GetItemType() == ITEMTYPE_SHOP;});
         */
-        showItemProgress = true;
         //Place shop items first, since a buy shield is needed to place a dungeon reward on Gohma due to access
         /*NonShopItems = {};
         if (Shopsanity.Is(SHOPSANITY_OFF)) {
@@ -839,8 +888,6 @@ int Fill() {
             AssumedFill(shopItems, shopLocations);
         }*/
 
-        //Place dungeon rewards
-        RandomizeDungeonRewards();
         /*
         //Place dungeon items restricted to their Own Dungeon
         for (auto dungeon : Dungeon::dungeonList) {
@@ -872,44 +919,6 @@ int Fill() {
         //Then place Link's Pocket Item if it has to be an advancement item
         RandomizeLinksPocket();
 
-        */
-        //Then place the rest of the advancement items
-        std::vector<ItemKey> remainingAdvancementItems = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) { return ItemTable(i).IsAdvancement();});
-        AssumedFill(remainingAdvancementItems, allLocations, true);
-
-        //Fast fill for the rest of the pool
-        std::vector<ItemKey> remainingPool = FilterAndEraseFromPool(ItemPool, [](const ItemKey i) {return true;});
-        FastFill(remainingPool, GetAllEmptyLocations(), false);
-        GeneratePlaythrough();
-        //Successful placement, produced beatable result
-        if (playthroughBeatable && !placementFailure) {
-            printf("Done");
-            printf("\x1b[9;10HCalculating Playthrough...");
-            PareDownPlaythrough();
-            CalculateWotH();
-            printf("Done");
-            CreateItemOverrides();
-           // CreateEntranceOverrides();
-           // CreateAlwaysIncludedMessages();
-            /*if (GossipStoneHints.IsNot(HINTS_NO_HINTS)) {
-                printf("\x1b[10;10HCreating Hints...");
-                CreateAllHints();
-                printf("Done");
-            }
-            if (ShuffleMerchants.Is(SHUFFLEMERCHANTS_HINTS)) {
-                CreateMerchantsHints();
-            }*/
-            return 1;
-        }
-        //Unsuccessful placement
-        if (retries < 4) {
-            GetAccessibleLocations(allLocations, SearchMode::AllLocationsReachable);
-            printf("\x1b[9;10HFailed. Retrying... %d", retries + 2);
-            Areas::ResetAllLocations();
-            Logic::LogicReset();
-        }
-        retries++;
-    }
-    //All retries failed
-    return -1;
-}
+        
+       
+}*/

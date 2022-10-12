@@ -201,7 +201,7 @@ static bool ValidateWorld(Entrance* entrancePlaced) {
   if (entrancePlaced != nullptr) {
     type = entrancePlaced->GetType();
   }*/
-  /*if ((Settings::ShuffleOverworldEntrances /*|| specialInterior || spawnPositions*/ /*) && (entrancePlaced == nullptr /*|| world.mix_entrance_pools != 'off'*/ //||
+  /*if ((Settings::ShuffleOverworldEntrances */ /*|| specialInterior || spawnPositions*/ /*) && (entrancePlaced == nullptr*/ /*|| world.mix_entrance_pools != 'off'*/ //||
   /*type == EntranceType::SpecialInterior || type == EntranceType::Overworld || type == EntranceType::Spawn || type == EntranceType::WarpSong || type == EntranceType::OwlDrop)) {
     //At least one valid starting region with all basic refills should be reachable without using any items at the beginning of the seed
     Logic::LogicReset();

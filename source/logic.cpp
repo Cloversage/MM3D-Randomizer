@@ -17,11 +17,11 @@ namespace Logic {
 
 	bool noVariable = false;
 	//item logic
-	bool Ocarina = true;
-	bool KokiriSword = true;
+	bool Ocarina = false;
+	bool KokiriSword = false;
 	bool HasBottle = false;
 	bool Bombchus = false;
-	bool DekuStick = true;
+	bool DekuStick = false;
 	bool MagicBean = false;
 	bool MagicBeanPack = false;
 	bool LensOfTruth = false;
@@ -35,12 +35,11 @@ namespace Logic {
 	bool PowderKeg = false;
 	bool Seahorse = false;
 	bool DekuPrincess = false;
-	bool BigPoe = true;
-	bool ZoraEgg = true;
-	bool Mushroom = true;
-	bool SpringWater = true;
+	bool BigPoe = false;
+	bool Mushroom = false;
+	bool SpringWater = false;
 	bool HotSpringWater = false;
-	bool SpinAttack = true;
+	bool SpinAttack = false;
 	bool Epona = false;
 	bool WitchBottle = false;
 	bool AlienBottle = false;
@@ -48,11 +47,11 @@ namespace Logic {
 	bool BeaverRaceBottle = false;
 	bool DampeBottle = false;
 	bool ChateauBottle = false;
-	bool BombersNotebook = true;
+	bool BombersNotebook = false;
 	bool MirrorShield = false;
-	bool HerosShield = true;
-	bool RazorSword = true;
-	bool GildedSword = true;
+	bool HerosShield = false;
+	bool RazorSword = false;
+	bool GildedSword = false;
 	//bool GretFairysMask = false;
 	bool BombBag20 = false;
 	bool TownBombBag = false;
@@ -61,14 +60,14 @@ namespace Logic {
 	bool SwampArcheryQuiver = false;
 	bool Townwallet200 = false;
 	bool OceanWallet500 = false;
-	bool MagicPower = true;
-	bool ExtendedMagicPower = true;
+	bool MagicPower = false;
+	bool ExtendedMagicPower = false;
 	bool GreatFairySword = false;
 	bool StoneTowerMagicBean = false;
 	bool SwampScrubMagicBean = false;
 	bool AllZoraEggs = false;
 	//mask logic
-	bool DekuMask = true;
+	bool DekuMask = false;
 	bool GoronMask = false;
 	bool ZoraMask = false;
 	bool KeatonMask = false;
@@ -92,8 +91,8 @@ namespace Logic {
 	bool GiantsMask = false;
 	bool FierceDietyMask = false;
 	bool MaskOfTruth = false;
-	bool OneMask = true;
-	bool TwoMasks = true;
+	bool OneMask = false;
+	bool TwoMasks = false;
 	bool ThreeMasks = false;
 	bool FourMasks = false;
 	bool AllMasks = false;
@@ -118,10 +117,10 @@ namespace Logic {
 	bool LetterMamaAccess = false;
 	bool MoonsTearAccess = false;
 	//Songs
-	bool ScarecrowSong = true;
+	bool ScarecrowSong = false;
 	bool SongOfStorms = false;
 	bool SonataOfAwakening = false;
-	bool SongOfHealing = true;
+	bool SongOfHealing = false;
 	bool GoronsLullaby = false;
 	bool NewWaveBossaNova = false;
 	bool ElegyOfEmptiness = false;
@@ -157,20 +156,20 @@ namespace Logic {
 	u8 GBTStrayFairies = 0;
 	u8 StoneTowerStrayFairies = 0;
 	//Drops & Bottle Contents Access
-	bool DekuNutDrop = true;
-	bool NutPot = true;
-	bool NutCrate = true;
-	bool DekuBabaNuts = true;
-	bool DekuStickDrop = true;
-	bool StickPot = true;
-	bool DekuBabaSticks = true;
-	bool BugsAccess = true;
-	bool BugShrub = true;
-	bool WanderingBugs = true;
-	bool BugRock = true;
-	bool FishAccess = true;
-	bool FishGroup = true;
-	bool LoneFish = true;
+	bool DekuNutDrop = false;
+	bool NutPot = false;
+	bool NutCrate = false;
+	bool DekuBabaNuts = false;
+	bool DekuStickDrop = false;
+	bool StickPot = false;
+	bool DekuBabaSticks = false;
+	bool BugsAccess = false;
+	bool BugShrub = false;
+	bool WanderingBugs = false;
+	bool BugRock = false;
+	bool FishAccess = false;
+	bool FishGroup = false;
+	bool LoneFish = false;
 	bool BombchuDrop = false;
 	bool BuyBombchus5 = false;
 	bool BuyBombchus10 = false;
@@ -179,58 +178,58 @@ namespace Logic {
 	bool WaterAccess = false;
 	bool HotSpringWaterAccess = false;
 	//Helpers, Events, Locations
-	bool MagicMeter = true;
+	bool MagicMeter = false;
 	bool BombBag = false;
 	bool Explosives = false;
-	bool Scarecrow = true;
+	bool Scarecrow = false;
 	bool Bombs = false;
-	bool Nuts = true;
-	bool Sticks = true;
-	bool Bugs = true;
-	bool Fish = true;
+	bool Nuts = false;
+	bool Sticks = false;
+	bool Bugs = false;
+	bool Fish = false;
 	bool HasBombchus = false;
 	bool FoundBombchus = false;
 	bool HasExplosives = false;
 	bool CanBlastOrSmash = false;
-	bool CanCutShrubs = true;
+	bool CanCutShrubs = false;
 	bool CanDive = false;
-	bool CanPlantBugs = true;
+	bool CanPlantBugs = false;
 	bool CanRideEpona = false;
 	bool CanPlantBean = false;
-	bool CanOpenBombGrotto = true;
+	bool CanOpenBombGrotto = false;
 	bool CanOpenStormGrotto = false;
 	bool HasFireSource = false;
-	bool HasFireSourceWithTorch = true;
-	bool HasShield = true;
-	bool CanShield = true;
-	bool IsItem = true;
-	bool CanShootBubble = true;
+	bool HasFireSourceWithTorch = false;
+	bool HasShield = false;
+	bool CanShield = false;
+	bool IsItem = false;
+	bool CanShootBubble = false;
 	bool CanUseProjectile = false;
 	bool Arrows = false;
-	bool AnyBottle = true;
-	bool AnySword = true;
-	bool AnyBombBag = true;
+	bool AnyBottle = false;
+	bool AnySword = false;
+	bool AnyBombBag = false;
 	bool AnyMagicBean = false;
 	bool WaterForBeans = false;
 	bool TwoBottles = false;
 	bool AnyWallet = false;
 	bool LimitlessBeans = false;
-	bool AnyShield = true;
+	bool AnyShield = false;
 	bool AnyHealingPotion = false;
-	bool AnyRedPotion = true;
-	bool AnyBluePotion = true;
+	bool AnyRedPotion = false;
+	bool AnyBluePotion = false;
 	bool UseFireArrow = false;
 	bool UseIceArrow = false;
 	bool UseLightArrow = false;
-	bool AnyBSword = true;
+	bool AnyBSword = false;
 	//dungeon clears
 	bool WoodfallClear = false;
 	bool SnowheadClear = false;
 	bool GreatBayClear = false;
 	bool StoneTowerClear = false;
 	//Locational Helpers
-	bool PoisonSwampAccess = true;
-	bool WoodfallTempleAccess = true;
+	bool PoisonSwampAccess = false;
+	bool WoodfallTempleAccess = false;
 	bool NorthAccess = false;
 	bool SnowheadTempleAccess = false;
 	bool EponaAccess = false;
@@ -258,21 +257,21 @@ namespace Logic {
 	bool NightInnAccess = false;
 	bool EnterSnowheadTemple = false;
 	bool GBTReverseWaterDirection = false;
-	bool Fighting = true;
-	bool CrossPoisonWater = true;
+	bool Fighting = false;
+	bool CrossPoisonWater = false;
 	bool AccessToAllOceanSpiders = false;
 	bool AccessToAllSwampSpiders = false;
-	bool ClockTownStrayFairy = true;
+	bool ClockTownStrayFairy = false;
 	bool AllWoodfallStrays = false;
 	bool AllSnowheadStrays = false;
 	bool AllGreatBayStrays = false;
 	bool AllStoneTowerStrays = false;
 	bool AnyPaper = false;
 	//Tricks
-	bool DekuStickFighting = true;
+	bool DekuStickFighting = false;
 	bool PoisonWaterAsZora = false;
 	bool WFT2ndFloorSkip = false;
-	bool TakeDamage = true;
+	bool TakeDamage = false;
 
 	//NewHelpers
 	bool SHSwitchPress = false;
@@ -292,12 +291,13 @@ namespace Logic {
 	bool AtDay = false;
 	bool AtNight = false;
 	u8 Day =0;
-	bool IsDay1Day = false;
-	bool IsDay2Day = false;
-	bool IsDay3Day = false;
-	bool IsDay1Night = false;
-	bool IsDay2Night = false;
-	bool IsDay3Night = false;
+	bool IsDay1 = false;
+	bool IsDay2 = false;
+	bool IsDay3 = false;
+
+	bool CanGoToMoon = false;
+	
+	u8 ZoraEgg = 0;
 
 	//placement tracking
 	u8 AddedProgressiveBombBags = 0;
@@ -362,7 +362,7 @@ namespace Logic {
 	static bool HasItem(ItemKey itemName) {
 		return (itemName == KOKIRI_SWORD && KokiriSword) ||
 			(itemName == LENS_OF_TRUTH && LensOfTruth) ||
-			(itemName == HEROS_BOW && Bow) ||
+			(itemName == HEROS_BOW && HerosBow) ||
 			(itemName == DEKU_STICK && DekuStick)||
 			(itemName == SCARECROW && Scarecrow) ||
 			(itemName == FIRE_ARROWS && FireArrows) ||
@@ -408,15 +408,19 @@ namespace Logic {
 		return (dungeonKeyCount >= requiredAmount);
 	}
 
+	bool ZoraEggCount(u8 currentEggCount, u8 requiredAmount) {
+		return (currentEggCount >= requiredAmount);
+	}
+
 	void UpdateHelpers() {
 		//Drop Access
 		DekuStickDrop = StickPot || DekuBabaSticks;
 		DekuNutDrop = NutPot || NutCrate || DekuBabaNuts;
 		BugsAccess = BugShrub || WanderingBugs || BugRock;
 		FishAccess = LoneFish || FishGroup;
-		WaterAccess = SpringWater || CanPlay(SongOfStorms);
-		HotSpringWaterAccess = HotSpringWater;
-		WaterForBeans = (CanUse(BOTTLE_WITH_RED_POTION) && WaterAccess) || SongOfStorms;
+		WaterAccess = (SpringWater && WitchBottle) || CanPlay(SongOfStorms);
+		HotSpringWaterAccess = HotSpringWater && WitchBottle;
+		WaterForBeans = (WitchBottle && WaterAccess) || SongOfStorms;
 		AnyMagicBean = (MagicBean || MagicBeanPack || LimitlessBeans);
 		//refills
 		Bombs = AnyBombBag;
@@ -473,10 +477,10 @@ namespace Logic {
 		//Bottle Items
 		AnyBottle = WitchBottle || AlienBottle || BeaverRaceBottle || DampeBottle || GoronRaceBottle || ChateauBottle;
 		DekuPrincess = WoodfallClear && AnyBottle;
-		BigPoe = IkanaCanyonAccess && GibdosMask && AnyBottle && AnyBombBag;
+		//BigPoe = IkanaCanyonAccess && GibdosMask && AnyBottle && AnyBombBag;
 		//HotSpringWater = NorthAccess && AnyBottle && (SnowheadClear || UseFireArrow);
 		//SpringWater = AnyBottle;
-		ZoraEgg = PiratesFortressAccess && Hookshot && AnyBottle && PinnacleRockAccess && ((DekuMask && MagicMeter) || Arrows);
+		//ZoraEgg = PiratesFortressAccess && Hookshot && AnyBottle && PinnacleRockAccess && ((DekuMask && MagicMeter) || Arrows);
 		AllZoraEggs = CanUse(ZORA_MASK) && CanUse(HOOKSHOT) && AnyBottle && Seahorse && CanUse(DEKU_MASK) && MagicMeter;
 		Mushroom = MaskOfScents && AnyBottle;
 		AnyHealingPotion = AnyRedPotion || AnyBluePotion;
@@ -522,13 +526,13 @@ namespace Logic {
 		EponaAccess = GoronMask && PowderKeg;
 		MoonAccess = StoneTowerClear && GreatBayClear && SnowheadClear && WoodfallClear;
 		//Temple Keys
-		OneSnowheadKey = SnowheadTempleKeys == 1;
-		TwoSnowheadKeys = SnowheadTempleKeys == 2;
-		OneStoneTowerKey = StoneTowerTempleKeys == 1;
-		TwoStoneTowerKeys = StoneTowerTempleKeys == 2;
-		ThreeStoneTowerKeys = StoneTowerTempleKeys == 3;
-		OneWoodfallKey = WoodfallTempleKeys == 1;
-		OneGreatBayKey = GreatBayTempleKeys == 1;
+		//OneSnowheadKey = SnowheadTempleKeys == 1;
+		//TwoSnowheadKeys = SnowheadTempleKeys == 2;
+		//OneStoneTowerKey = StoneTowerTempleKeys == 1;
+		//TwoStoneTowerKeys = StoneTowerTempleKeys == 2;
+		//ThreeStoneTowerKeys = StoneTowerTempleKeys == 3;
+		//OneWoodfallKey = WoodfallTempleKeys == 1;
+		//OneGreatBayKey = GreatBayTempleKeys == 1;
 		//Stray Fairy Rewards
 		AllWoodfallStrays = WoodfallClear;
 		AllSnowheadStrays = SnowheadClear;
@@ -541,26 +545,26 @@ namespace Logic {
 		OneMask = (PostmansHat || AllNightMask || BlastMask || StoneMask || GreatFairyMask || KeatonMask || BremenMask || BunnyHood ||
 			DonGerosMask || MaskOfScents || RomanisMask || CircusLeadersMask || KafeisMask || CouplesMask || MaskOfTruth || KamarosMask ||
 			GibdosMask || GarosMask || CaptainsHat || GiantsMask);
-		TwoMasks = true;
-		ThreeMasks = true;
-		FourMasks=true;
+		TwoMasks = false;
+		ThreeMasks = false;
+		FourMasks=false;
 		AllMasks = (PostmansHat && AllNightMask && BlastMask && StoneMask && GreatFairyMask && KeatonMask && BremenMask && BunnyHood &&
 				DonGerosMask && MaskOfScents && RomanisMask && CircusLeadersMask && KafeisMask && CouplesMask && MaskOfTruth && KamarosMask &&
 				GibdosMask && GarosMask && CaptainsHat && GiantsMask);
 	}
 
 	bool EventsUpdated() {
-		return true;
+		return false;
 	}
 	//Resets all logic to false
 	void LogicReset() {
 		  noVariable = false;
 	//item logic
-	  Ocarina = true;
-	  KokiriSword = true;
-	  HasBottle = true;
+	  Ocarina = false;
+	  KokiriSword = false;
+	  HasBottle = false;
 	  Bombchus = false;
-	  DekuStick = true;
+	  DekuStick = false;
 	  MagicBean = false;
 	  MagicBeanPack = false;
 	  LensOfTruth = false;
@@ -575,39 +579,38 @@ namespace Logic {
 	  Seahorse = false;
 	  DekuPrincess = false;
 	  BigPoe = false;
-	  ZoraEgg = true;
 	  Mushroom = false;
 	  SpringWater = false;
 	  HotSpringWater = false;
-	  SpinAttack = true;
+	  SpinAttack = false;
 	  Epona = false;
-	  WitchBottle = true;
+	  WitchBottle = false;
 	  AlienBottle = false;
 	  GoronRaceBottle = false;
 	  BeaverRaceBottle = false;
 	  DampeBottle = false;
 	  ChateauBottle = false;
-	  BombersNotebook = true;
+	  BombersNotebook = false;
 	  MirrorShield = false;
-	  HerosShield = true;
-	  RazorSword = true;
-	  GildedSword = true;
+	  HerosShield = false;
+	  RazorSword = false;
+	  GildedSword = false;
 	//  GretFairysMask = false;
-	  BombBag20 = true;
+	  BombBag20 = false;
 	  TownBombBag = false;
 	  MountainBombBag = false;
 	  TownArcheryQuiver = false;
 	  SwampArcheryQuiver = false;
 	  Townwallet200 = false;
 	  OceanWallet500 = false;
-	  MagicPower = true;
-	  ExtendedMagicPower = true;
+	  MagicPower = false;
+	  ExtendedMagicPower = false;
 	  GreatFairySword = false;
 	  StoneTowerMagicBean = false;
 	  SwampScrubMagicBean = false;
 
 	//mask logic
-	  DekuMask = true;
+	  DekuMask = false;
 	  GoronMask = false;
 	  ZoraMask = false;
 	  KeatonMask = false;
@@ -631,8 +634,8 @@ namespace Logic {
 	  GiantsMask = false;
 	  FierceDietyMask = false;
 	  MaskOfTruth = false;
-	  OneMask = true;
-	  TwoMasks = true;
+	  OneMask = false;
+	  TwoMasks = false;
 	  ThreeMasks = false;
 	  FourMasks = false;
 	  AllMasks = false;
@@ -657,10 +660,10 @@ namespace Logic {
 	  LetterMamaAccess = false;
 	  MoonsTearAccess = false;
 	//Songs
-	  ScarecrowSong = true;
+	  ScarecrowSong = false;
 	  SongOfStorms = false;
 	  SonataOfAwakening = false;
-	  SongOfHealing = true;
+	  SongOfHealing = false;
 	  GoronsLullaby = false;
 	  NewWaveBossaNova = false;
 	  ElegyOfEmptiness = false;
@@ -672,16 +675,17 @@ namespace Logic {
 	  GohtRemains = false;
 	  GyorgRemains = false;
 	  TwinmoldRemains = false;
+	  
 	//Progressive Items
 	//u8 ProgressiveBow = 0;
 	//u8 ProgressiveMagic = 0;
 	//u8 ProgressiveWallet = 0;
 	//u8 ProgressiveBombBag = 0;
 	//Keys
-	//u8 WoodfallTempleKeys = 0;
-	//u8 SnowheadTempleKeys = 0;
-	//u8 GreatBayTempleKeys = 0;
-	//u8 StoneTowerTempleKeys = 0;
+	 WoodfallTempleKeys = 0;
+	 SnowheadTempleKeys = 0;
+	 GreatBayTempleKeys = 0;
+	 StoneTowerTempleKeys = 0;
 	//Boss Keys
 	  BossKeyWoodfallTemple = false;
 	  BossKeySnowheadTemple = false;
@@ -696,20 +700,20 @@ namespace Logic {
 	//u8 GBTStrayFairies = 0;
 	//u8 StoneTowerStrayFairies = 0;
 	//Drops & Bottle Contents Access
-	  DekuNutDrop = true;
-	  NutPot = true;
-	  NutCrate = true;
-	  DekuBabaNuts = true;
-	  DekuStickDrop = true;
-	  StickPot = true;
-	  DekuBabaSticks = true;
-	  BugsAccess = true;
-	  BugShrub = true;
-	  WanderingBugs = true;
-	  BugRock = true;
-	  FishAccess = true;
-	  FishGroup = true;
-	  LoneFish = true;
+	  DekuNutDrop = false;
+	  NutPot = false;
+	  NutCrate = false;
+	  DekuBabaNuts = false;
+	  DekuStickDrop = false;
+	  StickPot = false;
+	  DekuBabaSticks = false;
+	  BugsAccess = false;
+	  BugShrub = false;
+	  WanderingBugs = false;
+	  BugRock = false;
+	  FishAccess = false;
+	  FishGroup = false;
+	  LoneFish = false;
 	  BombchuDrop = false;
 	  BuyBombchus5 = false;
 	  BuyBombchus10 = false;
@@ -718,50 +722,50 @@ namespace Logic {
 	  WaterAccess = false;
 	  HotSpringWaterAccess = false;
 	//Helpers, Events, Locations
-	  MagicMeter = true;
-	  BombBag = true;
-	  Explosives = true;
-	  Scarecrow = true;
-	  Bombs = true;
-	  Nuts = true;
-	  Sticks = true;
-	  Bugs = true;
-	  Fish = true;
+	  MagicMeter = false;
+	  BombBag = false;
+	  Explosives = false;
+	  Scarecrow = false;
+	  Bombs = false;
+	  Nuts = false;
+	  Sticks = false;
+	  Bugs = false;
+	  Fish = false;
 	  HasBombchus = false;
 	  FoundBombchus = false;
-	  HasExplosives = true;
-	  CanBlastOrSmash = true;
-	  CanCutShrubs = true;
+	  HasExplosives = false;
+	  CanBlastOrSmash = false;
+	  CanCutShrubs = false;
 	  CanDive = false;
-	  CanPlantBugs = true;
+	  CanPlantBugs = false;
 	  CanRideEpona = false;
 	  CanPlantBean = false;
-	  CanOpenBombGrotto = true;
+	  CanOpenBombGrotto = false;
 	  CanOpenStormGrotto = false;
 	  HasFireSource = false;
-	  HasFireSourceWithTorch = true;
-	  HasShield = true;
-	  CanShield = true;
-	  IsItem = true;
-	  CanShootBubble = true;
+	  HasFireSourceWithTorch = false;
+	  HasShield = false;
+	  CanShield = false;
+	  IsItem = false;
+	  CanShootBubble = false;
 	  CanUseProjectile = false;
 	  Arrows = false;
-	  AnyBottle = true;
-	  AnySword = true;
-	  AnyBombBag = true;
+	  AnyBottle = false;
+	  AnySword = false;
+	  AnyBombBag = false;
 	  AnyMagicBean = false;
 	  WaterForBeans = false;
 	  TwoBottles = false;
 	  AnyWallet = false;
 	  LimitlessBeans = false;
-	  AnyShield = true;
+	  AnyShield = false;
 	  AnyHealingPotion = false;
-	  AnyRedPotion = true;
-	  AnyBluePotion = true;
+	  AnyRedPotion = false;
+	  AnyBluePotion = false;
 	  UseFireArrow = false;
 	  UseIceArrow = false;
 	  UseLightArrow = false;
-	  AnyBSword = true;
+	  AnyBSword = false;
 	  AllZoraEggs = false;
 	//dungeon clears
 	  WoodfallClear = false;
@@ -769,8 +773,8 @@ namespace Logic {
 	  GreatBayClear = false;
 	  StoneTowerClear = false;
 	//Locational Helpers
-	  PoisonSwampAccess = true;
-	  WoodfallTempleAccess = true;
+	  PoisonSwampAccess = false;
+	  WoodfallTempleAccess = false;
 	  NorthAccess = false;
 	  SnowheadTempleAccess = false;
 	  EponaAccess = false;
@@ -798,21 +802,21 @@ namespace Logic {
 	  NightInnAccess = false;
 	  EnterSnowheadTemple = false;
 	  GBTReverseWaterDirection = false;
-	  Fighting = true;
-	  CrossPoisonWater = true;
+	  Fighting = false;
+	  CrossPoisonWater = false;
 	  AccessToAllOceanSpiders = false;
 	  AccessToAllSwampSpiders = false;
-	  ClockTownStrayFairy = true;
+	  ClockTownStrayFairy = false;
 	  AllWoodfallStrays = false;
 	  AllSnowheadStrays = false;
 	  AllGreatBayStrays = false;
 	  AllStoneTowerStrays = false;
 	  AnyPaper = false;
 	//Tricks
-	  DekuStickFighting = true;
+	  DekuStickFighting = false;
 	  PoisonWaterAsZora = false;
 	  WFT2ndFloorSkip = false;
-	  TakeDamage = true;
+	  TakeDamage = false;
 
 	//New Things
 	SHSwitchPress = false;
@@ -833,12 +837,12 @@ namespace Logic {
 	AtDay = false;
 	AtNight = false;
 	Day =0;
-	IsDay1Day = false;
-	IsDay2Day = false;
-	IsDay3Day = false;
-	IsDay1Night = false;
-	IsDay2Night = false;
-	IsDay3Night = false;
+	IsDay1 = false;
+	IsDay2 = false;
+	IsDay3 = false;
+	
+	  ZoraEgg = 0;
+	CanGoToMoon = false;
 	//placement tracking
 	//u8 AddedProgressiveBombBags = 0;
 	//u8 AddedProgressiveMagics = 0;

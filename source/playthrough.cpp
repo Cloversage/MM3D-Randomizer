@@ -48,14 +48,14 @@ namespace Playthrough {
       if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_VANILLA)) {
         VanillaFill(); //Just place items in their vanilla locations
       }
-      else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHLESS)){ //Fill locations with logic
+      else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHLESS) || Settings::Logic.Is(rnd::LogicSetting::LOGIC_GLITCHED)){ //Fill locations with logic
         int ret = Fill(); 
         if (ret < 0) {
             return ret;
         }
       }
-      else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_NONE)){
-        NoLogicFill();
+      else if (Settings::Logic.Is(rnd::LogicSetting::LOGIC_NONE)){ 
+        NoLogicFill(); //no logic fill
       }
       GenerateHash();
 

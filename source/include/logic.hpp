@@ -27,7 +27,7 @@ namespace Logic {
 	extern bool Seahorse;
 	extern bool DekuPrincess;
 	extern bool BigPoe;
-	extern bool ZoraEgg;
+	extern u8 ZoraEgg;
 	extern bool Mushroom;
 	extern bool SpringWater;
 	extern bool HotSpringWater;
@@ -299,12 +299,11 @@ namespace Logic {
 	extern bool AtDay;
 	extern bool AtNight;
 	extern u8 Day;
-	extern bool IsDay1Day;
-	extern bool IsDay2Day;
-	extern bool IsDay3Day;
-	extern bool IsDay1Night;
-	extern bool IsDay2Night;
-	extern bool IsDay3Night;
+	extern bool IsDay1;
+	extern bool IsDay2;
+	extern bool IsDay3;
+
+	extern bool CanGoToMoon;
 
 	void UpdateHelpers();
 	bool CanPlay(bool song);
@@ -314,6 +313,7 @@ namespace Logic {
 	bool CanUse(ItemKey itemName);
 	bool HasProjectile(ItemKey itemName);
 	bool SmallKeys(u8 dungeonKeyCount, u8 requiredAmount);
+	bool ZoraEggCount(u8 currentEggCount, u8 requiredAmount);
 	bool EventsUpdated();
 	void LogicReset();
 }
